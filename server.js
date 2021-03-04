@@ -25,7 +25,7 @@ const jsonParser = express.json();
 
 app.use(cors());
 
-app.get('/', (req, res) => {console.log("This is working.");} );
+app.get('/', (req, res) => {res.json("This is working.");} );
 app.post('/signin', jsonParser, (req, res) => handlePostSigin(req, res, database, bcrypt) );
 app.post('/register', jsonParser, (req, res) => handlePostRegister(req, res, database, bcrypt) );
 app.get('/profile/:id', (req, res) => handleGetProfile(req, res, database) );
