@@ -25,10 +25,13 @@ const jsonParser = express.json();
 
 app.use(cors());
 
+app.get('/', (req, res) => {console.log("This is working.");} );
 app.post('/signin', jsonParser, (req, res) => handlePostSigin(req, res, database, bcrypt) );
 app.post('/register', jsonParser, (req, res) => handlePostRegister(req, res, database, bcrypt) );
 app.get('/profile/:id', (req, res) => handleGetProfile(req, res, database) );
 app.post('/imageUrl', jsonParser, (req, res) => handlePostImageUrl(req, res) );
 app.put('/image', jsonParser, (req, res) => handlePutImage(req, res, database) );
 
-app.listen(2000);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`This app is running at ${process.env.PORT}`);
+});
